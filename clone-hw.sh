@@ -5,7 +5,7 @@ if ! command -v git &> /dev/null; then
     exit 1
 fi
 
-folders=("hw-1")
+folders=("hw-1" "hw-2" )
 
 select_option() {
     local selected=0
