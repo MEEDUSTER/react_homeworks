@@ -1,0 +1,82 @@
+:root{
+  --bg-1: #0f2027;
+  --bg-2: #203a43;
+  --bg-3: #2c5364;
+  --card-bg: #fbfdff; /* slightly off-white */
+  --accent: #6b63ff; /* softer violet */
+  --success: #09c372;
+  --danger: #ff3860;
+}
+
+*{box-sizing:border-box}
+body {
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: linear-gradient(135deg,var(--bg-1),var(--bg-2),var(--bg-3));
+  font-family: "Poppins", sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+.container{width:100%;padding:28px;display:flex;align-items:center;justify-content:center}
+
+.input-control input:focus{outline:0;box-shadow:0 6px 18px rgba(107,99,255,0.08)}
+.input-control.success input{border-color:var(--success)}
+.input-control.error input{border-color:var(--danger)}
+.input-control .error{color:var(--danger);font-size:12px;min-height:16px;margin-top:6px}
+
+#form{
+  width:100%;
+  max-width:620px; /* compact, pleasant width */
+  padding:26px 28px; /* compact padding */
+  background:var(--card-bg);
+  border-radius:12px;
+  box-shadow: 0 10px 30px rgba(8,12,20,0.18);
+  font-size:15px;
+}
+
+#form h1{
+  color:var(--bg-1);
+  text-align:center;
+  margin:0 0 14px 0;
+  font-size:26px;
+  letter-spacing:0.2px;
+  font-weight:700;
+}
+
+#form button{
+  cursor:pointer;
+  padding:12px 14px;
+  margin-top:16px;
+  width:100%;
+  color:#fff;
+  background: linear-gradient(90deg,var(--accent),#8b84ff);
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  font-size:15px;
+  transition:transform .12s ease, opacity .12s ease, box-shadow .12s ease;
+  box-shadow: 0 8px 20px rgba(107,99,255,0.12);
+}
+
+#form button:disabled{opacity:.6;cursor:not-allowed;transform:none}
+
+.input-control{display:flex;flex-direction:column;margin-bottom:12px}
+.input-control label{margin-bottom:6px;color:#1f2937;font-size:13px;font-weight:600}
+.input-control input{
+  border:1px solid #eceff1;border-radius:10px;padding:12px 14px;font-size:15px;transition:border-color .12s ease, box-shadow .12s ease;
+}
+
+@media (max-width:900px){
+  #form{max-width:94%; padding:20px}
+}
+
+@media (max-width:520px){
+  #form{max-width:98%; padding:16px}
+  #form h1{font-size:20px}
+}
+
+
