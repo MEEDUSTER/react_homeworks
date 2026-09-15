@@ -5,7 +5,7 @@ if ! command -v git &> /dev/null; then
     exit 1
 fi
 
-folders=("hw-1" "hw-2" "hw-3" "hw-4" "hw-5" "hw-6" )
+folders=("hw-1" "hw-2" "hw-3" "hw-4" "hw-5" "hw-6" "hw-7" "hw-8" "hw-9")
 
 select_option() {
     local selected=0
