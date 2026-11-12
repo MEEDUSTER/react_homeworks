@@ -1,0 +1,74 @@
+:root {
+  --font-sans: "Exo 2", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Unbounded", "Exo 2", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --brass: #c4a35a;
+  --void: #0c0d10;
+  --panel: #14161c;
+  --steel: #8a909c;
+  --alert: #b4232c;
+  --ink: #e6e2d6;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(196, 163, 90, 0.07), transparent 55%),
+    linear-gradient(180deg, #101218 0%, #0c0d10 40%, #0a0b0e 100%);
+  background-color: var(--void);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+#root {
+  position: relative;
+}
+
+#root::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(196, 163, 90, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 163, 90, 0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 85%);
+}
+
+::selection {
+  background: rgba(196, 163, 90, 0.28);
+  color: #f4efe3;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--void);
+}
+::-webkit-scrollbar-thumb {
+  background: #2c3038;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brass);
+}
