@@ -19,8 +19,8 @@ export const TaskFilters = () => {
   );
 
   return (
-    <div className="mb-6 border border-cyan-neon/20 bg-[#07070d]/80 p-4 sm:p-5">
-      <p className="label-hud">02 // фільтри</p>
+    <div className="mb-8 border-t border-white/5 pt-6">
+      <p className="label-hud">Фільтри</p>
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
           type="text"

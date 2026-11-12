@@ -23,7 +23,7 @@ export const NewsListPage = () => {
 
   if (error) {
     return (
-      <div className="text-center py-12 text-rose-600 font-semibold">
+      <div className="py-16 text-center font-medium text-alert">
         {error}
       </div>
     );
@@ -31,10 +31,17 @@ export const NewsListPage = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-zinc-900 mb-6">Останні новини</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {newsList.map((news) => (
-          <NewsCard key={news.id} news={news} />
+      <div className="mb-8">
+        <p className="mb-2 font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
+          Стрічка
+        </p>
+        <h1 className="font-display text-3xl font-semibold tracking-tight text-[#f2eee4] sm:text-4xl">
+          Останні новини
+        </h1>
+      </div>
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+        {newsList.map((news, index) => (
+          <NewsCard key={news.id} news={news} featured={index === 0} />
         ))}
       </div>
     </div>

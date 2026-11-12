@@ -35,16 +35,16 @@ export const NewsDetailPage = () => {
 
   if (isNotFound) {
     return (
-      <div className="text-center py-16 bg-white border border-zinc-200 rounded-3xl p-8 max-w-lg mx-auto">
-        <h2 className="text-4xl font-bold text-zinc-900 mb-2">404</h2>
-        <p className="text-zinc-600 mb-6">
+      <div className="article-shell mx-auto max-w-lg px-8 py-16 text-center">
+        <p className="font-mono text-[11px] tracking-[0.2em] text-brass uppercase">
+          Помилка
+        </p>
+        <h2 className="font-display mt-2 text-5xl font-semibold text-[#f2eee4]">404</h2>
+        <p className="mt-4 mb-8 text-steel">
           Запитуваної новини не існує або її було видалено.
         </p>
-        <Link
-          to="/"
-          className="px-5 py-2.5 bg-indigo-600 text-white font-semibold rounded-xl hover:bg-indigo-700 transition-all inline-block"
-        >
-           повернутися на головну
+        <Link to="/" className="btn-cyber">
+          Повернутися на головну
         </Link>
       </div>
     );
@@ -52,7 +52,7 @@ export const NewsDetailPage = () => {
 
   if (error || !news) {
     return (
-      <div className="text-center py-12 text-rose-600 font-semibold">
+      <div className="py-16 text-center font-medium text-alert">
         {error || "Сталася помилка"}
       </div>
     );
@@ -65,38 +65,37 @@ export const NewsDetailPage = () => {
   });
 
   return (
-    <article className="max-w-3xl mx-auto bg-white border border-zinc-200 rounded-3xl overflow-hidden shadow-xs p-6 sm:p-10">
-      <Link
-        to="/"
-        className="inline-flex items-center text-sm font-semibold text-zinc-500 hover:text-zinc-900 mb-6 transition-colors"
-      >
-        &larr; Назад до новин
-      </Link>
-
-      <div className="flex flex-wrap items-center gap-3 mb-4 text-sm">
-        <span className="font-semibold px-3 py-1 bg-indigo-50 text-indigo-600 rounded-lg">
-          {news.category}
-        </span>
-        <span className="text-zinc-400">•</span>
-        <span className="text-zinc-500">{formattedDate}</span>
-        <span className="text-zinc-400">•</span>
-        <span className="text-zinc-500 font-medium">Автор: {news.author}</span>
-      </div>
-
-      <h1 className="text-2xl sm:text-4xl font-bold text-zinc-900 mb-6">
-        {news.title}
-      </h1>
-
+    <article className="article-shell mx-auto max-w-3xl overflow-hidden">
       <img
         src={news.imageUrl}
         alt={news.title}
-        className="w-full h-80 object-cover rounded-2xl mb-8"
+        className="h-72 w-full object-cover sm:h-96"
       />
+      <div className="p-6 sm:p-10">
+        <Link
+          to="/"
+          className="link-arrow mb-6 inline-flex items-center"
+        >
+          ← Назад до новин
+        </Link>
 
-      <div className="text-zinc-700 leading-relaxed space-y-4 text-base sm:text-lg">
-        {news.content.split("\n\n").map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))}
+        <div className="mb-4 flex flex-wrap items-center gap-3 text-sm">
+          <span className="badge">{news.category}</span>
+          <span className="text-steel/40">•</span>
+          <span className="font-mono text-[11px] text-steel">{formattedDate}</span>
+          <span className="text-steel/40">•</span>
+          <span className="text-sm text-steel">Автор: {news.author}</span>
+        </div>
+
+        <h1 className="font-display mb-8 text-2xl font-semibold tracking-tight text-[#f2eee4] sm:text-4xl sm:leading-tight">
+          {news.title}
+        </h1>
+
+        <div className="space-y-4 text-base leading-8 text-[#d8d3c6] sm:text-lg">
+          {news.content.split("\n\n").map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
       </div>
     </article>
   );

@@ -5,9 +5,9 @@ import { NewsDetailPage } from "./pages/NewsDetailPage";
 
 const Layout = () => {
   return (
-    <div className="min-h-screen bg-zinc-50 text-zinc-900 pb-12">
+    <div className="min-h-screen pb-16 text-[#e6e2d6]">
       <Header />
-      <main className="max-w-6xl mx-auto px-4">
+      <main className="mx-auto max-w-6xl px-4">
         <Outlet />
       </main>
     </div>

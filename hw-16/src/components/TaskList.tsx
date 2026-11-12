@@ -46,13 +46,13 @@ export const TaskList = () => {
 
   if (filteredTasks.length === 0) {
     return (
-      <div>
-        <p className="label-hud">04 // потік завдань</p>
-        <div className="border border-dashed border-cyber/30 bg-void/50 px-6 py-12 text-center">
-          <p className="font-display text-lg font-bold tracking-widest text-cyber uppercase">
-            No data
+      <div className="border-t border-white/5 pt-6">
+        <p className="label-hud">Завдання</p>
+        <div className="border border-dashed border-white/10 px-6 py-12 text-center">
+          <p className="font-display text-base font-medium text-[#f2eee4]">
+            Завдань поки немає
           </p>
-          <p className="mt-2 font-mono text-xs tracking-widest text-[#9b9578] uppercase">
+          <p className="mt-2 text-sm text-steel">
             Жодного завдання не знайдено за вказаними фільтрами.
           </p>
         </div>
@@ -61,36 +61,36 @@ export const TaskList = () => {
   }
 
   const getPriorityClasses = (p: string) => {
-    if (p === "high") return "border-alert/50 bg-alert/8";
-    if (p === "medium") return "border-cyber/35 bg-cyber/5";
-    return "border-cyan-neon/35 bg-cyan-neon/5";
+    if (p === "high") return "border-alert/35 bg-alert/5";
+    if (p === "medium") return "border-brass/25 bg-white/[0.02]";
+    return "border-white/10 bg-transparent";
   };
 
   const getPriorityStripe = (p: string) => {
-    if (p === "high") return "bg-alert shadow-[0_0_12px_#e8232e]";
-    if (p === "medium") return "bg-cyber shadow-[0_0_12px_#fcee0a]";
-    return "bg-cyan-neon shadow-[0_0_12px_#00f0ff]";
+    if (p === "high") return "bg-alert";
+    if (p === "medium") return "bg-brass";
+    return "bg-steel";
   };
 
   const getPriorityBadgeClasses = (p: string) => {
-    if (p === "high") return "border-alert text-alert";
-    if (p === "medium") return "border-cyber text-cyber";
-    return "border-cyan-neon text-cyan-neon";
+    if (p === "high") return "border-alert/40 text-[#e8c4c6]";
+    if (p === "medium") return "border-brass/40 text-brass";
+    return "border-white/15 text-steel";
   };
 
   return (
-    <div>
-      <p className="label-hud">04 // потік завдань</p>
+    <div className="border-t border-white/5 pt-6">
+      <p className="label-hud">Завдання</p>
       <ul className="space-y-2">
         {filteredTasks.map((task) => (
           <li
             key={task.id}
-            className={`relative overflow-hidden border p-4 pl-5 transition-all duration-200 ${getPriorityClasses(
+            className={`relative border p-4 pl-5 transition-colors duration-200 ${getPriorityClasses(
               task.priority
-            )} ${task.completed ? "opacity-60" : ""}`}
+            )} ${task.completed ? "opacity-55" : ""}`}
           >
             <span
-              className={`absolute inset-y-0 left-0 w-1 ${getPriorityStripe(task.priority)}`}
+              className={`absolute inset-y-0 left-0 w-px ${getPriorityStripe(task.priority)}`}
             />
             <div className="flex items-center justify-between gap-3">
               <div className="flex min-w-0 flex-1 items-center gap-3.5">
@@ -113,15 +113,15 @@ export const TaskList = () => {
                   />
                 ) : (
                   <div className="flex min-w-0 flex-1 items-center gap-2.5">
-                    <span className="shrink-0 border border-cyber/25 bg-void px-2 py-0.5 font-mono text-[10px] tracking-widest text-cyber uppercase">
+                    <span className="shrink-0 border border-white/10 px-2 py-0.5 font-mono text-[10px] tracking-wider text-steel uppercase">
                       {task.category}
                     </span>
                     <span
                       style={{
                         textDecoration: task.completed ? "line-through" : "none",
                       }}
-                      className={`truncate text-sm font-semibold cursor-pointer ${
-                        task.completed ? "text-[#8c876d]" : "text-[#f4efd0]"
+                      className={`truncate text-sm font-medium cursor-pointer ${
+                        task.completed ? "text-steel" : "text-[#f2eee4]"
                       }`}
                       onClick={() => startEditing(task)}
                       title="Клікніть для редагування"
@@ -134,7 +134,7 @@ export const TaskList = () => {
 
               <div className="ml-1 flex shrink-0 items-center gap-2">
                 <span
-                  className={`hidden border px-2 py-0.5 font-mono text-[10px] tracking-widest uppercase sm:inline-block ${getPriorityBadgeClasses(
+                  className={`hidden border px-2 py-0.5 font-mono text-[10px] tracking-wider uppercase sm:inline-block ${getPriorityBadgeClasses(
                     task.priority
                   )}`}
                 >

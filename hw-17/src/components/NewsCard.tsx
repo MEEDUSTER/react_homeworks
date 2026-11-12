@@ -3,9 +3,10 @@ import { type NewsItem } from "../mocks/db";
 
 interface NewsCardProps {
   news: Omit<NewsItem, "content">;
+  featured?: boolean;
 }
 
-export const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
+export const NewsCard: React.FC<NewsCardProps> = ({ news, featured = false }) => {
   const formattedDate = new Date(news.createdAt).toLocaleDateString("uk-UA", {
     day: "numeric",
     month: "long",
@@ -13,30 +14,29 @@ export const NewsCard: React.FC<NewsCardProps> = ({ news }) => {
   });
 
   return (
-    <article className="flex flex-col bg-white border border-zinc-200 rounded-2xl overflow-hidden shadow-xs hover:shadow-md transition-all">
+    <article className={`news-card ${featured ? "featured" : ""}`}>
       <img
         src={news.imageUrl}
         alt={news.title}
-        className="w-full h-48 object-cover"
+        className="news-card-image"
       />
-      <div className="p-5 flex flex-col flex-1">
-        <div className="flex items-center justify-between gap-2 mb-3">
-          <span className="text-xs font-semibold px-2.5 py-1 bg-indigo-50 text-indigo-600 rounded-lg">
-            {news.category}
-          </span>
-          <span className="text-xs text-zinc-400">{formattedDate}</span>
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <span className="badge">{news.category}</span>
+          <span className="font-mono text-[11px] text-steel">{formattedDate}</span>
         </div>
-        <h2 className="text-lg font-bold text-zinc-900 mb-2 line-clamp-2">
+        <h2
+          className={`mb-2 font-display font-semibold tracking-tight text-[#f2eee4] ${
+            featured ? "text-2xl sm:text-3xl" : "text-lg"
+          }`}
+        >
           {news.title}
         </h2>
-        <p className="text-sm text-zinc-600 mb-4 line-clamp-3 flex-1">
+        <p className="mb-5 flex-1 text-sm leading-relaxed text-steel line-clamp-3">
           {news.summary}
         </p>
-        <Link
-          to={`/news/${news.id}`}
-          className="inline-flex items-center text-sm font-semibold text-indigo-600 hover:text-indigo-700 mt-auto"
-        >
-          Читати далі &rarr;
+        <Link to={`/news/${news.id}`} className="link-arrow mt-auto">
+          Читати далі →
         </Link>
       </div>
     </article>

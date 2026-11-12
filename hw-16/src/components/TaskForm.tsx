@@ -19,11 +19,8 @@ export const TaskForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="mb-6 border border-cyber/20 bg-void/60 p-4 sm:p-5"
-    >
-      <p className="label-hud">01 // нове завдання</p>
+    <form onSubmit={handleSubmit} className="mb-8">
+      <p className="label-hud">Нове завдання</p>
       <div className="flex flex-col gap-3 sm:flex-row">
         <input
           type="text"
@@ -49,7 +46,7 @@ export const TaskForm = () => {
           <option value="high">Високий пріоритет</option>
         </select>
         <button type="submit" className="btn-cyber shrink-0">
-          + Додати
+          Додати
         </button>
       </div>
     </form>
